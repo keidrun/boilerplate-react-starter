@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
+import StylelintPlugin from 'stylelint-webpack-plugin';
 
 export const outputPath = path.resolve(__dirname, '../build');
 
@@ -45,6 +46,9 @@ export default {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash:8].css',
+    }),
+    new StylelintPlugin({
+      files: 'src/**/*.css',
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
