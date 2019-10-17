@@ -4,8 +4,10 @@
 .*/build/.*
 .*\.(test|spec)\.js
 .*/build/.*
-.*webpack.*
-.*jest\.config\.js
+.*/coverage/.*
+.*/config/.*
+.*\.config\.js
+.*eslintrc\.js
 <PROJECT_ROOT>/src/index\.js
 
 [include]

@@ -1,9 +1,9 @@
-import merge from 'webpack-merge';
-import common, { outputPath } from './webpack.common.babel';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
+import merge from 'webpack-merge'
+import base, { outputPath } from './webpack.base.babel'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 
-export default merge(common, {
+export default merge(base, {
   mode: 'development',
   module: {
     rules: [
@@ -34,8 +34,9 @@ export default merge(common, {
   devServer: {
     contentBase: outputPath,
     compress: true,
+    overlay: true,
     hot: true,
     port: 3000,
   },
   devtool: 'eval-source-map',
-});
+})

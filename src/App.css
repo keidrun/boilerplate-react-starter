@@ -1,25 +1,25 @@
 .App {
-  background-image: url(../assets/woman.jpg);
-  background-size: cover;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
+  background-image: url(../assets/woman.jpg);
+  background-size: cover;
 }
 
 .App-header {
-  background-color: #09d3ac;
-  opacity: 0.6;
-  border-radius: 30px;
-  height: 450px;
-  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 70%;
+  height: 450px;
   font-size: calc(10px + 4vmin);
   color: white;
+  background-color: #09d3ac;
+  border-radius: 30px;
+  opacity: 0.6;
 }
 
 p {
@@ -27,9 +27,9 @@ p {
 }
 
 button {
-  margin: 0 5px;
-  padding: 10px;
   width: 200px;
+  padding: 10px;
+  margin: 0 5px;
   font-size: calc(10px + 4vmin);
   border-radius: 10px;
 }

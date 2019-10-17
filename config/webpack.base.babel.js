@@ -1,12 +1,13 @@
-import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import StylelintPlugin from 'stylelint-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin'
+import { CleanWebpackPlugin } from 'clean-webpack-plugin'
+import StylelintPlugin from 'stylelint-webpack-plugin'
+import FlowWebpackPlugin from 'flow-webpack-plugin'
 
-export const outputPath = path.resolve(__dirname, '../build');
+export const outputPath = path.resolve(__dirname, '../build')
 
 export default {
   entry: './src/index.js',
@@ -16,6 +17,15 @@ export default {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: {
+          fix: true,
+        },
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -49,7 +59,9 @@ export default {
     }),
     new StylelintPlugin({
       files: 'src/**/*.css',
+      fix: true,
     }),
+    new FlowWebpackPlugin(),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -57,8 +69,9 @@ export default {
     minimizer: [new OptimizeCSSAssetsPlugin()],
   },
   resolve: {
+    extensions: ['.js', '.jsx'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
   },
-};
+}
