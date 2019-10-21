@@ -12,7 +12,7 @@ function App({ initialCount }: Props) {
   return (
     <div className="App" data-test="component-app">
       <header className="App-header">
-        <p>My React App without Create React App!</p>
+        <h3>My React App without Create React App!</h3>
         <p>Count: {count}</p>
         <div>
           <button type="button" onClick={() => setCount(count + 1)}>
